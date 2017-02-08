@@ -1,21 +1,5 @@
 <?php
-// connection string
-
-$dsn = 'mysql:host=ca-cdbr-azure-central-a.cloudapp.net;dbname=videogamesdb';
-$userName = 'b6ee96bd470785';
-$password = 'dc381279';
-
-
-// exception handling - use a try / catch
-try {
-    // instantiates a new pdo - an db object
-    $db = new PDO($dsn, $userName, $password);
-
-}
-catch(PDOException $e) {
-    $message = $e->getMessage();
-    echo "An error occurred: " . $message;
-}
+include_once('database.php');
 
 $query = "SELECT * FROM games"; // SQL statement
 $statement = $db->prepare($query); // encapsulate the sql statement
@@ -40,15 +24,27 @@ $statement->closeCursor(); // close the connection
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-            <h1>PHP with MySQL</h1>
+            <h1>Games List</h1>
 
-            <ul>
-                <?php
-                foreach($games as $game) {
-                    echo '<li>' . $game['Id'] . " " . $game['Name'] . " " . $game['Cost'] .'</li>';
-                }
-                ?>
-            </ul>
+            <table class="table table-striped table-hover table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                    <?php foreach($games as $game) : ?>
+                        <tr>
+                        <td><?php echo $game['Id'] ?></td>
+                        <td><?php echo $game['Name'] ?></td>
+                        <td><?php echo $game['Cost'] ?></td>
+                        <td><a class="btn btn-primary" href="game_details.php?Game_ID=<?php echo $game['Id'] ?>"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
+                        <td><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+            </table>
 
         </div>
     </div>
