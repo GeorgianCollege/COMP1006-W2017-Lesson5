@@ -36,11 +36,14 @@ $statement->closeCursor(); // close the connection
                 </tr>
                     <?php foreach($games as $game) : ?>
                         <tr>
-                        <td><?php echo $game['Id'] ?></td>
-                        <td><?php echo $game['Name'] ?></td>
-                        <td><?php echo $game['Cost'] ?></td>
-                        <td><a class="btn btn-primary" href="game_details.php?Game_ID=<?php echo $game['Id'] ?>"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
-                        <td><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
+                            <td><?php echo $game['Id'] ?></td>
+                            <td><?php echo $game['Name'] ?></td>
+                            <td><?php echo $game['Cost'] ?></td>
+                            <!-- This line sends the gameID to the game_details page -->
+
+                            <td><a class="btn btn-primary" href="game_details.php?gameID=<?php echo $game['Id'] ?>"><i class="fa fa-pencil-square-o"></i> Edit</a></td>
+
+                            <td><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a></td>
                         </tr>
                     <?php endforeach; ?>
 
