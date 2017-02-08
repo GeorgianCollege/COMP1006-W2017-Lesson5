@@ -1,5 +1,5 @@
 <?php
-include_once('database.php');
+include_once('database.php'); // include the database connection file
 
 $gameID = $_GET["gameID"]; // assigns the gameID from the URL
 
@@ -29,20 +29,20 @@ $statement->closeCursor(); // close the connection
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <h1>Game Details</h1>
-            <form action="" method="post">
+            <form action="update_database.php" method="post">
                 <div class="form-group">
                     <label for="IDTextField">Game ID</label>
-                    <input type="text" class="form-control" id="IDTextField"
+                    <input type="text" class="form-control" id="IDTextField" name="IDTextField"
                            placeholder="Game ID" value="<?php echo $game['Id']; ?>">
                 </div>
                 <div class="form-group">
                     <label for="NameTextField">Game Name</label>
-                    <input type="text" class="form-control" id="NameTextField"
+                    <input type="text" class="form-control" id="NameTextField"  name="NameTextField"
                            placeholder="Game Name" required  value="<?php echo $game['Name']; ?>">
                 </div>
                 <div class="form-group">
                     <label for="CostTextField">Game Cost</label>
-                    <input type="text" class="form-control" id="CostTextField"
+                    <input type="text" class="form-control" id="CostTextField" name="CostTextField"
                            placeholder="Game Cost" required  value="<?php echo $game['Cost']; ?>">
                 </div>
                 <button type="submit" id="UpdateButton" class="btn btn-default">Update</button>

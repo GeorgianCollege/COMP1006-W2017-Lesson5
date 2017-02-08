@@ -1,10 +1,15 @@
 <?php
 // connection string
 
+// cleardb access
 $dsn = 'mysql:host=ca-cdbr-azure-central-a.cloudapp.net;dbname=videogamesdb';
 $userName = 'b6ee96bd470785';
 $password = 'dc381279';
 
+//local db access
+//$dsn = 'mysql:host=localhost;dbname=gamedb';
+//$userName = 'dasha';
+//$password = '12345';
 
 // exception handling - use a try / catch
 try {
